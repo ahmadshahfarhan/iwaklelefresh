@@ -21,7 +21,7 @@ const Home = () => {
               src={Aset}
               alt="iwak lele fresh"
             />
-            <h1 className=" font-bold text-[63px] md:text-6xl lg:text-7xl max-w-[508px] leading-none">
+            <h1 className=" font-bold text-[66px] md:text-6xl lg:text-7xl max-w-[370px] md:max-w-[508px] leading-[57px]">
               Fresh, <span className={span}>Higenis</span> dan siap sesuai{" "}
               <span className={span}>Request</span>
             </h1>
@@ -34,23 +34,23 @@ const Home = () => {
           </div>
           <div className=" relative">
             <img
-              className=" w-[320px] md:w-[480px] relative z-20 mt-[-80px] md:mt-0"
+              className=" w-[310px] md:w-[480px] relative z-10 md:z-20 mt-[-80px] ml-[20px] md:mt-0 "
               src={Kemasan}
               alt="iwak lele fresh"
             />
-            <div className=" absolute top-[430px] bottom-0 left-[-90px] z-20">
-              <div className="inline-flex items-center gap-x-2 bg-[#ebebeb] rounded-[100px] px-4 py-2">
+            <div className=" absolute top-[250px] md:top-[430px] bottom-0 left-[120px] md:left-[-90px] z-20">
+              <div className="inline-flex items-center gap-x-2 bg-[#ebebeb] rounded-[100px] px-3 md:px-4 py-1 md:py-2">
                 <img
-                  className=" bg-[#7ed95796] rounded-full py-1 px-1 w-[54px]"
+                  className=" bg-[#7ed95796] rounded-full py-1 px-1 w-[52px] md:w-[54px]"
                   src={Gojek}
                   alt="iwak lele fresh"
                 />
                 <div>
-                  <h1 className=" font-semibold">Fast Delivery</h1>
-                  <div className=" flex items-center gap-1 text-[11px]">
+                  <h1 className=" font-semibold text-xs md:text-sm">Fast Delivery</h1>
+                  <div className=" flex items-center gap-1 text-[11px] ">
                     <FaStar className=" text-amber-300 text-[16px]" />
-                    <span>4.5</span>
-                    <span>(10k Reviews)</span>
+                    <h2>4.5</h2>
+                    <h2>(10k Reviews)</h2>
                   </div>
                 </div>
               </div>
