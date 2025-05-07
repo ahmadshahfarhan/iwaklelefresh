@@ -1,6 +1,6 @@
 import React from "react";
 import { RiShoppingBasketFill } from "react-icons/ri";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../assets/images/logo.png";
 
 const Navbar = () => {
   return (

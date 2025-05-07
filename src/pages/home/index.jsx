@@ -1,23 +1,24 @@
 import React from "react";
-import './index.css';
+import "../../style/home.css";
+import Navbar from "../../components/navbar";
+
 import Kemasan from "../../assets/svg/kemasanlele.svg";
 import Aset from "../../assets/svg/element.svg";
 import Gojek from "../../assets/svg/rating.svg";
 import { FaStar } from "react-icons/fa";
 
-
 const Home = () => {
-  const span =
-   `text-[#ffbd59] stroke-black stroke-1 
+  const span = `text-[#ffbd59] stroke-black stroke-1 
    [text-shadow:_-3px_-3px_0_#ffffff,_3px_-3px_0_#ffffff,_-3px_3px_0_#ffffff,_3px_3px_0_#ffffff,_0px_0px_2px_#ffffff]`;
 
   return (
     <>
-      <div className=" pt-[84px]">
-        <div className="flex items-center justify-center flex-wrap md:flex-nowrap gap-[5px] sm:gap-[10px] md:gap-[15px] lg:gap-[120px] pt-6 overflow-y-hidden">
-          <div className=" lg:mt-[-20px] relative z-20">
+      <Navbar />
+      <div className=" mt-[84px] container">
+        <div className="flex items-center justify-center flex-wrap md:flex-nowrap gap-[5px] sm:gap-[10px] md:gap-[15px] lg:gap-[120px] pt-6">
+          <div className=" relative z-20">
             <img
-              className="absolute top-[-70px] left-[-140px] z-[-1] w-[132px]"
+              className="absolute top-[-70px] left-[-140px] z-[-1] w-[132px] hidden lg:block"
               src={Aset}
               alt="iwak lele fresh"
             />
@@ -34,11 +35,12 @@ const Home = () => {
           </div>
           <div className=" relative">
             <img
-              className=" w-[310px] md:w-[480px] relative z-10 md:z-20 mt-[-80px] ml-[20px] md:mt-0 "
+              className=" w-[310px] md:w-[480px] relative z-10"
               src={Kemasan}
               alt="iwak lele fresh"
             />
-            <div className=" absolute top-[250px] md:top-[430px] bottom-0 left-[120px] md:left-[-90px] z-20">
+            {/* fast delivery */}
+            {/* <div className=" absolute top-[250px] md:top-[430px] bottom-0 left-[120px] md:left-[-90px] z-20">
               <div className="inline-flex items-center gap-x-2 bg-[#ebebeb] rounded-[100px] px-3 md:px-4 py-1 md:py-2">
                 <img
                   className=" bg-[#7ed95796] rounded-full py-1 px-1 w-[52px] md:w-[54px]"
@@ -46,7 +48,9 @@ const Home = () => {
                   alt="iwak lele fresh"
                 />
                 <div>
-                  <h1 className=" font-semibold text-xs md:text-sm">Fast Delivery</h1>
+                  <h1 className=" font-semibold text-xs md:text-sm">
+                    Fast Delivery
+                  </h1>
                   <div className=" flex items-center gap-1 text-[11px] ">
                     <FaStar className=" text-amber-300 text-[16px]" />
                     <h2>4.5</h2>
@@ -54,9 +58,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
+          <h1 className=" text-9xl">halo</h1>
         <svg
           className=" absolute top-0 right-0 z-[-1] hidden md:block"
           width="400"
@@ -75,7 +80,7 @@ const Home = () => {
         >
           <path d="M240  0 L400 0 L400 640 L30 2000 Z" fill="#FDBA58" />
         </svg>
-        <div className=" absolute right-[-28px] z-10 top-24 hidden md:block">
+        <div className=" absolute right-0 z-10 top-24 hidden md:block">
           <h1 className="font-bold text-[97px] text-[#f5f3f37f] [writing-mode:vertical-rl] leading-none tracking-tight">
             IWAK LELE
           </h1>
