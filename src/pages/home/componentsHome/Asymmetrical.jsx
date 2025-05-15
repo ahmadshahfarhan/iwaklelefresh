@@ -2,7 +2,7 @@ const Asymmetrical = () => {
   return (
     <>
       <svg
-        className=" absolute top-0 right-0 z-[-1] hidden md:block"
+        className=" absolute top-0 right-0 z-[1] hidden md:block"
         width="400"
         height="640"
         viewBox="0 0 400 640"
@@ -11,7 +11,7 @@ const Asymmetrical = () => {
         <path d="M80  0 L400 0 L400 640 L30 610 Z" fill="#FDBA58" />
       </svg>
       <svg
-        className=" absolute top-0 right-0 z-[-1] block md:hidden"
+        className=" absolute top-0 right-0 z-[1] block md:hidden"
         width="400"
         height="640"
         viewBox="0 0 400 640"
