@@ -1,4 +1,4 @@
-import Lelepeople from "../assets/svg/Footer.svg";
+import Lelepeople from "../assets/svg/footer.svg";
 import logo from "../assets/images/logo.png";
 
 import { SocialMedia, whatsapp } from "../data/DataFooter";
