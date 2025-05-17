@@ -1,5 +1,5 @@
 import "../../style/home.css";
-// import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar";
 
 import Kemasan from "../../assets/svg/kemasanlele.svg";
 import Aset from "../../assets/svg/element.svg";
@@ -9,7 +9,7 @@ import HeroSection from "./componentsHome/HeroSection";
 import Asymmetrical from "./componentsHome/Asymmetrical";
 import { Testimoni } from "../../components/Testimoni";
 import Banner from "../../components/Banner";
-import Produk from "../../components/produk";
+import Produk from "../../components/Produk";
 import Footer from "../../components/Footer";
 
 import { Banners } from "../../data/DataBanner";
@@ -19,7 +19,7 @@ import { Produks } from "../../data/DataProduk";
 const Home = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className=" mt-[78px] container">
         <HeroSection Aset={Aset} Kemasan={Kemasan} Gojek={Gojek} />
         <Asymmetrical />
