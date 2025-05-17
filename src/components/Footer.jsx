@@ -45,9 +45,7 @@ const Footer = () => {
                   const IconComponent = iconMap[item.icon.toLowerCase()];
                   return (
                     <a target="_blank" href={item.link} key={index}>
-                      {IconComponent && (
-                        <IconComponent className="text-2xl text-white" />
-                      )}
+                      <IconComponent className="text-2xl text-white" />
                     </a>
                   );
                 })}
