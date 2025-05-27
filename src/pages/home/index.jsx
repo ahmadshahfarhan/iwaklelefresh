@@ -9,7 +9,7 @@ import HeroSection from "./componentsHome/HeroSection";
 import Asymmetrical from "./componentsHome/Asymmetrical";
 import { Testimoni } from "../../components/Testimoni";
 import Banner from "../../components/Banner";
-import Produk from "../../components/Produk";
+import Produk from "../../components/Produk/Produk";
 import Footer from "../../components/Footer";
 
 import { Banners } from "../../data/DataBanner";

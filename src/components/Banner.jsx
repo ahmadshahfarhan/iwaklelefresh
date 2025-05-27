@@ -5,7 +5,7 @@ const Banner = (props) => {
         return (
           <div className=" flex justify-center" key={index}>
             <img
-              className=" lg:rounded-4xl rounded-3xl w-[1490px] lg:h-[340px] h-auto object-cover transition-responsive"
+              className=" lg:rounded-4xl rounded-3xl w-[1490px] lg:h-[340px] object-cover transition-responsive"
               src={banners.img}
               alt={banners.title}
             />
