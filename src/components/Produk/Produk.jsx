@@ -30,14 +30,14 @@ const Produk = ({ Produks = [] }) => {
     <>
       <div>
         <Filter setSearch={setSearch} Search={Search} />
-        <div className=" flex justify-center w-full mt-12">
+        <div className=" flex justify-center w-full md:mt-12 mt-3">
           <div className=" grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-12 gap-6 transition-responsive">
             {currentItems.length > 0 ? (
               currentItems.map((produk, index) => {
                 return (
                   <div key={index} className=" transition-responsive p-3">
                     <img
-                      className=" md:w-[285px] md:h-[285px] w-[285px] h-[185px]"
+                      className=" md:w-[285px] md:h-[285px] w-[270px] h-[170px]"
                       src={produk.img}
                       alt={produk.title}
                     />

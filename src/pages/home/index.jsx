@@ -26,7 +26,7 @@ const Home = () => {
         <div className="mt-[30px]">
           <Testimoni reviews={reviews} />
         </div>
-        <div className="mt-[50px] space-y-12">
+        <div className="mt-[50px] md:space-y-12 space-y-8">
           <Banner Banners={Banners} />
           <Produk Produks={Produks} />
         </div>
