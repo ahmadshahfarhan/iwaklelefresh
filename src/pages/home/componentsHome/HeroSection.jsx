@@ -1,6 +1,16 @@
 import FastDelivery from "./FastDelivery";
 
-const HeroSection = ({Aset, Kemasan, Gojek}) => {
+const HeroSection = ({ Aset, Kemasan, Gojek }) => {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   const span = `text-[#ffbd59] stroke-black stroke-1 
     [text-shadow:_-3px_-3px_0_#ffffff,_3px_-3px_0_#ffffff,_-3px_3px_0_#ffffff,_3px_3px_0_#ffffff,_0px_0px_2px_#ffffff]`;
 
@@ -20,7 +30,10 @@ const HeroSection = ({Aset, Kemasan, Gojek}) => {
           <h2 className=" font-bold text-xl mt-6 max-w-[300px] md:max-w-[481px]">
             Jual Lele Frozen, Segar (konsumsi) & Bibit, Bisa ecer dan grosir.
           </h2>
-          <button className=" mt-7 font-bold text-lg py-3 px-6 rounded-4xl bg-[#ffbd59] hover:bg-transparent hover:text-red-500 hover:underline underline-offset-8 transition-all duration-300">
+          <button
+            onClick={() => scrollToSection("produk")}
+            className=" mt-7 font-bold text-lg py-3 px-6 rounded-4xl bg-[#ffbd59] hover:bg-transparent hover:text-red-500 hover:underline underline-offset-8 transition-all duration-300"
+          >
             Shop now
           </button>
         </div>
