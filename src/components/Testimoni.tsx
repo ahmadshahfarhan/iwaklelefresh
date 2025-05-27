@@ -37,11 +37,11 @@ const ReviewCard = ({
   );
 };
 
-export function Testimoni({reviews}) {
+export function Testimoni({id,reviews}) {
   const firstRow = reviews.slice(0, reviews.length / 2);
   return (
     <>
-      <div>
+      <div id={id}>
         <h1 className=" font-bold md:text-4xl text-2xl transition-responsive">Testimoni Customer</h1>
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mt-5 transition-responsive">
           <Marquee pauseOnHover className="[--duration:20s]">

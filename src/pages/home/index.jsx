@@ -20,15 +20,15 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className=" mt-[78px] container">
+      <div  id="home" className=" mt-[78px] container">
         <HeroSection Aset={Aset} Kemasan={Kemasan} Gojek={Gojek} />
         <Asymmetrical />
         <div className="mt-[30px]">
-          <Testimoni reviews={reviews} />
+          <Testimoni id="testimoni" reviews={reviews} />
         </div>
         <div className="mt-[50px] md:space-y-12 space-y-8">
           <Banner Banners={Banners} />
-          <Produk Produks={Produks} />
+          <Produk id="produk" Produks={Produks} />
         </div>
       </div>
       <div className=" mt-[90px]">

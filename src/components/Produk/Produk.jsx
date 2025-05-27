@@ -3,7 +3,7 @@ import { RiShoppingBasketFill } from "react-icons/ri";
 import Filter from "./Filter";
 import Pagination from "../Pagination";
 
-const Produk = ({ Produks = [] }) => {
+const Produk = ({id, Produks = [] }) => {
   const [Search, setSearch] = useState("");
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -28,7 +28,7 @@ const Produk = ({ Produks = [] }) => {
 
   return (
     <>
-      <div>
+      <div id={id}>
         <Filter setSearch={setSearch} Search={Search} />
         <div className=" flex justify-center w-full md:mt-12 mt-3">
           <div className=" grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-12 gap-6 transition-responsive">
