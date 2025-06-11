@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect  } from "react";
 import { RiShoppingBasketFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import Pagination from "../Pagination";
 
@@ -8,6 +9,8 @@ const Produk = ({id, Produks = [] }) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 8;
+
+  const navigate = useNavigate();
 
   const filterData = Produks.filter((item) =>
     item.title.toLowerCase().includes(Search.toLocaleLowerCase())
@@ -35,14 +38,14 @@ const Produk = ({id, Produks = [] }) => {
             {currentItems.length > 0 ? (
               currentItems.map((produk, index) => {
                 return (
-                  <div key={index} className=" transition-responsive p-3">
+                  <div key={index} onClick={() => navigate(`/produk/${produk.id}`)} className=" transition-responsive p-3">
                     <img
                       className=" md:w-[285px] md:h-[285px] w-[270px] h-[170px]"
                       src={produk.img}
                       alt={produk.title}
                     />
-                    <h1 className=" font-semibold text-2xl">{produk.title}</h1>
-                    <h2 className=" text-md">{produk.description}</h2>
+                    <h1 className=" font-semibold text-xl">{produk.title}</h1>
+                    {/* <h2 className=" text-md">{produk.description}</h2> */}
                     <div className=" flex justify-between items-center flex-wrap gap-y-1 transition-responsive">
                       <h3 className=" font-bold text-2xl">
                         <span>Rp</span>
