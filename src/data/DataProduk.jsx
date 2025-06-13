@@ -6,10 +6,13 @@ export const Produks = [
   {
     id: 1,
     title: " iwak lele fresh higenis mantap",
-    description: "description",
+    description:
+      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
     img: Kemasan,
     imgMultiple: [test1, test2, test2, test1, test2, test1],
     price: "12.000",
+    terjual: "271",
+    penilaian: "200",
     sizes: ["S", "M", "L", "XL"],
   },
   {
@@ -19,6 +22,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "13.000",
+    terjual: "71",
+    penilaian: "20",
     sizes: ["S", "M", "L", "XL"],
   },
   {
@@ -28,6 +33,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "14.000",
+    terjual: "701",
+    penilaian: "20",
     sizes: ["S", "M", "XL", "XXL"],
   },
   {
@@ -37,6 +44,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "15.000",
+    terjual: "200",
+    penilaian: "100",
     sizes: ["M", "L", "XL", "XXL"],
   },
   {
@@ -46,6 +55,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "16.000",
+    terjual: "300",
+    penilaian: "100",
     sizes: ["S", "L", "XL", "XXL"],
   },
   {
@@ -55,6 +66,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "17.000",
+    terjual: "400",
+    penilaian: "100",
     sizes: ["S", "M", "L"],
   },
   {
@@ -64,6 +77,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1],
     price: "18.000",
+    terjual: "71",
+    penilaian: "20",
     sizes: ["S"],
   },
   {
@@ -73,6 +88,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [],
     price: "19.000",
+    terjual: "300",
+    penilaian: "300",
     sizes: ["M"],
   },
   {
@@ -82,6 +99,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "20.000",
+    terjual: "600",
+    penilaian: "20",
     sizes: ["XL", "XXL"],
   },
   {
@@ -91,6 +110,8 @@ export const Produks = [
     img: Kemasan,
     imgMultiple: [test1, test2],
     price: "21.000",
+    terjual: "71",
+    penilaian: "20",
     sizes: ["S", "M", "XL", "XXL"],
   },
 ];

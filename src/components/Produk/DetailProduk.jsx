@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { RiShoppingBasketFill } from "react-icons/ri";
 import { Produks } from "../../data/DataProduk";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Pagination from "../Pagination";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Thumbs, Navigation } from "swiper/modules";
@@ -13,7 +16,30 @@ import "swiper/css/thumbs";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 
+import { SocialMedia } from "../../data/DataFooter";
+
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaTiktok,
+  FaYoutube,
+  FaFacebook,
+} from "react-icons/fa";
+
 const detailProduk = () => {
+  const navigate = useNavigate();
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
+
+  const offset = currentPage * itemsPerPage;
+  const currentItems = Produks.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(Produks.length / itemsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const mainSwiperRef = useRef(null);
 
@@ -24,7 +50,6 @@ const detailProduk = () => {
   if (!produk) {
     return <div>Produk tidak ditemukan</div>;
   }
-  
 
   return (
     <>
@@ -120,11 +145,19 @@ const detailProduk = () => {
               <h1 className="font-bold text-4xl inline-flex">{produk.title}</h1>
               <div className=" flex gap-x-3">
                 <h1 className=" font-semibold text-black">
-                  217<span className=" font-normal text-gray-400 text-[14px]"> Terjual</span>
+                  {produk.terjual}
+                  <span className=" font-normal text-gray-400 text-[14px]">
+                    {" "}
+                    Terjual
+                  </span>
                 </h1>
                 |
-               <h1 className=" font-semibold text-black">
-                  200<span className=" font-normal text-gray-400 text-[14px]"> Penilaian</span>
+                <h1 className=" font-semibold text-black">
+                  {produk.penilaian}
+                  <span className=" font-normal text-gray-400 text-[14px]">
+                    {" "}
+                    Penilaian
+                  </span>
                 </h1>
               </div>
               <h2 className="font-bold text-[30px] text-[#ffbd59] inline-flex">
@@ -176,9 +209,115 @@ const detailProduk = () => {
           </div>
         </div>
       </div>
-      <div>
-        <h1>{produk.description}</h1>
+
+      <div className="container mt-[50px]">
+        <div className="flex flex-wrap justify-between max-w-[900px] mx-auto">
+          <div>
+            <h1 className=" font-semibold text-black text-[16px]">
+              Description
+            </h1>
+            <h1 className=" font-semibold text-gray-500 text-sm max-w-[700px] w-full mt-2">
+              {produk.description}
+            </h1>
+          </div>
+          <div>
+            <h1 className="font-semibold text-black text-[16px]">
+              social media
+            </h1>
+            <span className="mt-2 flex items-center gap-x-2">
+              {SocialMedia.map((item, index) => {
+                const iconMap = {
+                  instagram: FaInstagram,
+                  whatsapp: FaWhatsapp,
+                  tiktok: FaTiktok,
+                  youtube: FaYoutube,
+                  facebook: FaFacebook,
+                };
+                const IconComponent = iconMap[item.icon.toLowerCase()];
+                return (
+                  <a target="_blank" href={item.link} key={index}>
+                    <IconComponent className="text-2xl text-black" />
+                  </a>
+                );
+              })}
+            </span>
+          </div>
+        </div>
       </div>
+
+      <div className="container mt-[50px] mb-[50px]">
+        <div className="max-w-[1200px] mx-auto">
+          <h1 className="text-black font-semibold">Produk lainya</h1>
+          <div className="relative mt-6">
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={4}
+              modules={[Navigation]}
+              navigation={{
+                nextEl: ".main-next-2",
+                prevEl: ".main-prev-2",
+              }}
+              className="main-slider"
+            >
+              {currentItems.length > 0 ? (
+                currentItems.map((produk, index) => {
+                  return (
+                    <SwiperSlide key={index} className="flex items-center">
+                      <div
+                        key={index}
+                        onClick={() => navigate(`/produk/${produk.id}`)}
+                        className=" transition-responsive p-3"
+                      >
+                        <img
+                          className=" md:w-[285px] md:h-[285px] w-[270px] h-[170px]"
+                          src={produk.img}
+                          alt={produk.title}
+                        />
+                        <h1 className=" font-semibold text-xl">
+                          {produk.title}
+                        </h1>
+                        {/* <h2 className=" text-md">{produk.description}</h2> */}
+                        <div className=" flex justify-between items-center flex-wrap gap-y-1 transition-responsive">
+                          <h3 className=" font-bold text-2xl">
+                            <span>Rp</span>
+                            {produk.price}
+                          </h3>
+                          <div className=" flex justify-center items-center gap-1 bg-[#f9cb43] rounded-3xl px-2 py-1">
+                            <RiShoppingBasketFill />
+                            <button className=" font-semibold text-xs">
+                              Add Chart
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  );
+                })
+              ) : (
+                <div className="col-span-full flex justify-center items-center h-[100px]">
+                  <h2 className="text-xl font-bold">Data tidak ditemukan</h2>
+                </div>
+              )}
+            </Swiper>
+
+            {/* Tombol Navigasi Main Slider */}
+            <div className="absolute top-1/2 -left-6 z-10 cursor-pointer main-prev-2">
+              <span>
+                <GrPrevious />
+              </span>
+            </div>
+            <div className="absolute top-1/2 -right-6 z-10 cursor-pointer main-next-2">
+              <span>
+                <GrNext />
+              </span>
+            </div>
+          </div>
+        </div>
+        {pageCount > 1 && (
+          <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
+        )}
+      </div>
+
       <Footer />
     </>
   );
