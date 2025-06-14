@@ -20,6 +20,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       lucide-react:
         specifier: ^0.507.0
         version: 0.507.0(react@19.1.0)
@@ -908,6 +911,10 @@ packages:
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
+
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
 
   dtrace-provider@0.4.0:
     resolution: {integrity: sha512-UbcUrBJgIYE/Rxr1IqHlZTareuw557nemtDbMrhejec4gLOUEuRu3BKirWILEtd3AdvWcO7X/axJ1pYLBbTVTQ==}
@@ -2364,6 +2371,8 @@ snapshots:
       object-keys: 1.1.1
 
   detect-libc@2.0.3: {}
+
+  dotenv@16.5.0: {}
 
   dtrace-provider@0.4.0:
     dependencies:
