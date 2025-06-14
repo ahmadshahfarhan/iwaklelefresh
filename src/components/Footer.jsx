@@ -14,7 +14,7 @@ import {
 const Footer = () => {
   return (
     <>
-      <div className=" flex justify-end sm:justify-center md:justify-center  items-center bg-[#242322] py-3 md:py-0 md:bg-transparent mb-[-1px]">
+      {/* <div className=" flex justify-end sm:justify-center md:justify-center  items-center bg-[#242322] py-3 md:py-0 md:bg-transparent mb-[-1px]">
         <img src={Lelepeople} alt="" className=" md:w-[130px] w-[80px]" />
         <h1 className=" font-extrabold text-5xl md:text-8xl text-white md:text-[#ffbd59] relative z-10 anton-sc-regular transition-responsive">
           GET IN TOUCH
@@ -24,7 +24,7 @@ const Footer = () => {
             whatsapp
           </button>
         </div>
-      </div>
+      </div> */}
       <div className="">
         <div className=" bg-[#242322] p-6 px-9 relative ">
           <div className=" flex justify-between items-center">

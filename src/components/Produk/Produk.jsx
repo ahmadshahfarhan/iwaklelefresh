@@ -24,21 +24,21 @@ const Produk = ({id, Produks = [] }) => {
     setCurrentPage(selected);
   };
 
-  useEffect(() => {
+  useEffect(() => {   
     setCurrentPage(0);
   }, [Search]);
 
 
   return (
     <>
-      <div id={id}>
+      <div id={id} className="mb-[140px]">
         <Filter setSearch={setSearch} Search={Search} />
         <div className=" flex justify-center w-full md:mt-12 mt-3">
           <div className=" grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 md:gap-12 gap-6 transition-responsive">
             {currentItems.length > 0 ? (
               currentItems.map((produk, index) => {
                 return (
-                  <div key={index} onClick={() => navigate(`/produk/${produk.id}`)} className=" transition-responsive p-3">
+                  <div key={index} onClick={() => navigate(`/produk/${produk.slug}`)} className=" transition-responsive p-3">
                     <img
                       className=" md:w-[285px] md:h-[285px] w-[270px] h-[170px]"
                       src={produk.img}
@@ -49,7 +49,7 @@ const Produk = ({id, Produks = [] }) => {
                     <div className=" flex justify-between items-center flex-wrap gap-y-1 transition-responsive">
                       <h3 className=" font-bold text-2xl">
                         <span>Rp</span>
-                        {produk.price}
+                        {produk.sizes[0].price.toLocaleString("id-ID")}
                       </h3>
                       <div className=" flex justify-center items-center gap-1 bg-[#f9cb43] rounded-3xl px-2 py-1">
                         <RiShoppingBasketFill />

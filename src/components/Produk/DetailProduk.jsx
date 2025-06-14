@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { RiShoppingBasketFill } from "react-icons/ri";
 import { Produks } from "../../data/DataProduk";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Pagination from "../Pagination";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,9 +25,14 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
-const detailProduk = () => {
-  const navigate = useNavigate();
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 
+const detailProduk = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
 
@@ -43,9 +47,23 @@ const detailProduk = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const mainSwiperRef = useRef(null);
 
-  const { id } = useParams();
+  const { slug } = useParams();
+  const navigate = useNavigate();
+  const produk = Produks.find((item) => slugify(item.title) === slug);
+
   const [qty, setQty] = useState(1);
-  const produk = Produks.find((item) => String(item.id) === id);
+
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  useEffect(() => {
+    if (produk?.sizes?.length > 0) {
+      setSelectedSize(produk.sizes[0]);
+    }
+  }, [produk]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   if (!produk) {
     return <div>Produk tidak ditemukan</div>;
@@ -160,21 +178,29 @@ const detailProduk = () => {
                   </span>
                 </h1>
               </div>
-              <h2 className="font-bold text-[30px] text-[#ffbd59] inline-flex">
-                <span>Rp</span>
-                {produk.price}
-              </h2>
+              {selectedSize && (
+                <h2 className="font-bold text-[30px] text-[#ffbd59] inline-flex">
+                  <span>Rp</span>
+                  {(selectedSize.price * qty).toLocaleString("id-ID")}
+                </h2>
+              )}
+
               <div className=" flex-col inline-flex">
                 <span className="text-black font-semibold text-sm inline-flex">
                   Size
                 </span>
                 <div className="flex gap-x-2 items-center mt-1">
-                  {produk.sizes.map((size, index) => (
+                  {produk.sizes.map((item, index) => (
                     <button
                       key={index}
-                      className="bg-transparent hover:bg-black hover:text-white rounded-lg px-4 py-1 border border-gray-300 text-md text-black font-semibold"
+                      onClick={() => setSelectedSize(item)}
+                      className={`px-4 py-1 border rounded-lg text-md font-semibold ${
+                        selectedSize?.size === item.size
+                          ? "bg-black text-white"
+                          : "bg-transparent text-black border-gray-300 hover:bg-black hover:text-white"
+                      }`}
                     >
-                      {size}
+                      {item.size}
                     </button>
                   ))}
                 </div>
@@ -202,7 +228,31 @@ const detailProduk = () => {
                   +
                 </button>
               </div>
-              <button className="bg-[#ffbd59] rounded-lg px-7 py-2 text-md text-white font-semibold cursor-pointer w-fit mt-6">
+              <button
+                onClick={() => {
+                  const message = [
+                    "HALO MIN SAYA MAU ORDER",
+                    "",
+                    "------------------------------------",
+                    `PRODUK: ${produk.title}`,
+                    `JUMLAH: ${qty}`,
+                    `SIZE: ${selectedSize?.size}`,
+                    `TOTAL: Rp.${(selectedSize.price * qty).toLocaleString(
+                      "id-ID"
+                    )}`,
+                    "",
+                    "-------------------------------------",
+                    "NAMA : ",
+                    "ALAMAT : ",
+                  ].join("%0A");
+
+                  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+                  const waLink = `https://wa.me/${phoneNumber}?text=${message}`;
+
+                  window.open(waLink, "_blank");
+                }}
+                className="bg-[#ffbd59] rounded-lg px-7 py-2 text-md text-white font-semibold cursor-pointer w-fit mt-6"
+              >
                 Continue Buying
               </button>
             </div>
@@ -245,7 +295,7 @@ const detailProduk = () => {
         </div>
       </div>
 
-      <div className="container mt-[50px] mb-[50px]">
+      <div className="container mt-[50px] mb-[130px]">
         <div className="max-w-[1200px] mx-auto">
           <h1 className="text-black font-semibold">Produk lainya</h1>
           <div className="relative mt-6">
@@ -265,7 +315,12 @@ const detailProduk = () => {
                     <SwiperSlide key={index} className="flex items-center">
                       <div
                         key={index}
-                        onClick={() => navigate(`/produk/${produk.id}`)}
+                        onClick={() => {
+                          navigate(`/produk/${produk.slug}`);
+                          setTimeout(() => {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          });
+                        }}
                         className=" transition-responsive p-3"
                       >
                         <img
@@ -280,7 +335,7 @@ const detailProduk = () => {
                         <div className=" flex justify-between items-center flex-wrap gap-y-1 transition-responsive">
                           <h3 className=" font-bold text-2xl">
                             <span>Rp</span>
-                            {produk.price}
+                            {produk.sizes[0].price.toLocaleString("id-ID")}
                           </h3>
                           <div className=" flex justify-center items-center gap-1 bg-[#f9cb43] rounded-3xl px-2 py-1">
                             <RiShoppingBasketFill />

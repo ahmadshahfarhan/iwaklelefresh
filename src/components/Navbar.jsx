@@ -1,8 +1,11 @@
 import React from "react";
 import { RiShoppingBasketFill } from "react-icons/ri";
 import Logo from "../assets/images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
