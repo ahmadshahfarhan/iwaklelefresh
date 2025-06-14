@@ -25,6 +25,8 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
+ console.log(import.meta.env.VITE_WHATSAPP_NUMBER);
+
 const slugify = (text) =>
   text
     .toLowerCase()
