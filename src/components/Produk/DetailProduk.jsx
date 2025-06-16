@@ -14,6 +14,7 @@ import "swiper/css/thumbs";
 
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 import { SocialMedia } from "../../data/DataFooter";
 
@@ -25,7 +26,7 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
- console.log(import.meta.env.VITE_WHATSAPP_NUMBER);
+console.log(import.meta.env.VITE_WHATSAPP_NUMBER);
 
 const slugify = (text) =>
   text
@@ -79,7 +80,7 @@ const detailProduk = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 items-start md:gap-x-[160px] lg:gap-x-[170px] max-w-[900px]">
             <div>
               {/* Main Slider */}
-              <div className="relative">
+              <div className="relative w-full mx-auto h-auto max-h-[330px] max-w-[230px] md:max-w-full md:max-h-full">
                 <Swiper
                   onSwiper={(swiper) => (mainSwiperRef.current = swiper)}
                   spaceBetween={0}
@@ -97,7 +98,7 @@ const detailProduk = () => {
                       <img
                         src={src}
                         alt={`Product ${idx + 1}`}
-                        className="w-full h-auto max-h-[400px] object-contain"
+                        className="w-full mx-auto h-auto max-w-[200px] md:max-w-full max-h-[200px] md:max-h-[400px] object-contain"
                       />
                     </SwiperSlide>
                   ))}
@@ -119,7 +120,9 @@ const detailProduk = () => {
               {/* Thumbnail Slider */}
               <div
                 className={
-                  produk.imgMultiple.length === 0 ? "hidden" : "relative mt-4"
+                  produk.imgMultiple.length === 0
+                    ? "hidden"
+                    : "relative mt-4 mx-auto h-auto md:max-w-full max-w-[320px]"
                 }
               >
                 <Swiper
@@ -161,8 +164,10 @@ const detailProduk = () => {
             </div>
 
             {/* Kanan: Informasi Produk */}
-            <div className="space-y-3 flex flex-col w-fit">
-              <h1 className="font-bold text-4xl inline-flex">{produk.title}</h1>
+            <div className="space-y-3 flex flex-col w-fit md:mt-0 mt-12">
+              <h1 className="font-semibold md:font-bold text-2xl md:text-3xl inline-flex max-w-[350px] leading-[25px] md:max-w-full md:leading-[34px]">
+                {produk.title}
+              </h1>
               <div className=" flex gap-x-3">
                 <h1 className=" font-semibold text-black">
                   {produk.terjual}
@@ -309,6 +314,20 @@ const detailProduk = () => {
                 nextEl: ".main-next-2",
                 prevEl: ".main-prev-2",
               }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 2,
+                },
+                640: {
+                  slidesPerView: 2,
+                },
+                768: {
+                  slidesPerView: 3,
+                },
+                1024: {
+                  slidesPerView: 4,
+                },
+              }}
               className="main-slider"
             >
               {currentItems.length > 0 ? (
@@ -330,22 +349,35 @@ const detailProduk = () => {
                           src={produk.img}
                           alt={produk.title}
                         />
-                        <h1 className=" font-semibold text-xl">
+                        <h1 className=" font-semibold text-md leading-[16px] md:text-xl">
                           {produk.title}
                         </h1>
                         {/* <h2 className=" text-md">{produk.description}</h2> */}
                         <div className=" flex justify-between items-center flex-wrap gap-y-1 transition-responsive">
-                          <h3 className=" font-bold text-2xl">
+                          <h3 className=" font-bold text-xl md:text-2xl">
                             <span>Rp</span>
                             {produk.sizes[0].price.toLocaleString("id-ID")}
                           </h3>
-                          <div className=" flex justify-center items-center gap-1 bg-[#f9cb43] rounded-3xl px-2 py-1">
+                          {/* <div className=" flex justify-center items-center gap-1 bg-[#f9cb43] rounded-3xl px-2 py-1">
                             <RiShoppingBasketFill />
                             <button className=" font-semibold text-xs">
                               Add Chart
                             </button>
-                          </div>
+                          </div> */}
                         </div>
+                        <button
+                          onClick={() => {
+                            navigate(`/produk/${produk.slug}`);
+                            setTimeout(() => {
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            });
+                          }}
+                        >
+                          <span className=" flex items-center gap-x-2">
+                            <h1 className=" font-semibold text-md">see more</h1>
+                            <FaArrowCircleRight className="text-green-500" />
+                          </span>
+                        </button>
                       </div>
                     </SwiperSlide>
                   );
