@@ -1,4 +1,5 @@
 import "../../style/home.css";
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 
 import Kemasan from "../../assets/svg/kemasanlele.svg";
@@ -17,10 +18,23 @@ import { reviews } from "../../data/DataTestimoni";
 import { Produks } from "../../data/DataProduk";
 
 const Home = () => {
+  useEffect(() => {
+    const target = localStorage.getItem("scrollTarget");
+    if (target) {
+      const element = document.getElementById(target);
+      if (element) {
+        const yOffset = -80;
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+      localStorage.removeItem("scrollTarget");
+    }
+  }, []);
   return (
     <>
       <Navbar />
-      <div  id="home" className=" mt-[78px] container">
+      <div id="home" className=" mt-[78px] container">
         <HeroSection Aset={Aset} Kemasan={Kemasan} Gojek={Gojek} />
         <Asymmetrical />
         <div className="mt-[30px]">

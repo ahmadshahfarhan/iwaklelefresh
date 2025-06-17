@@ -77,7 +77,7 @@ const detailProduk = () => {
       <Navbar />
       <div className="mt-[150px]">
         <div className=" container mx-auto justify-center flex">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-start md:gap-x-[160px] lg:gap-x-[170px] max-w-[900px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-start md:gap-x-[100px] lg:gap-x-[170px] max-w-[900px] transition-responsive">
             <div>
               {/* Main Slider */}
               <div className="relative w-full mx-auto h-auto max-h-[330px] max-w-[230px] md:max-w-full md:max-h-full">
@@ -105,17 +105,17 @@ const detailProduk = () => {
                 </Swiper>
 
                 {/* Tombol Navigasi Main Slider */}
-                <div className="absolute top-1/2 -left-6 z-10 cursor-pointer main-prev">
+                <div className="absolute top-1/2 -left-6 md:-left-1 z-10 cursor-pointer main-prev">
                   <span>
-                    <GrPrevious />
+                    <GrPrevious className="bg-gray-200 rounded-full p-1" />
                   </span>
                 </div>
-                <div className="absolute top-1/2 -right-6 z-10 cursor-pointer main-next">
+                <div className="absolute top-1/2 -right-6 md:-right-1 z-10 cursor-pointer main-next">
                   <span>
-                    <GrNext />
+                    <GrNext className="bg-gray-200 rounded-full p-1" />
                   </span>
                 </div>
-              </div>
+              </div>  
 
               {/* Thumbnail Slider */}
               <div
@@ -150,14 +150,14 @@ const detailProduk = () => {
                 </Swiper>
 
                 {/* Tombol Navigasi Thumbnails */}
-                <div className="absolute top-[35px] -left-6 z-10 cursor-pointer thumb-prev">
+                <div className="absolute top-[35px] -left-6 md:-left-2 z-10 cursor-pointer thumb-prev">
                   <span>
-                    <GrPrevious />
+                    <GrPrevious className="bg-gray-200 rounded-full p-1" />
                   </span>
                 </div>
-                <div className="absolute top-[35px] -right-6 z-10 cursor-pointer thumb-next">
+                <div className="absolute top-[35px] -right-6 md:-right-2 z-10 cursor-pointer thumb-next">
                   <span>
-                    <GrNext />
+                    <GrNext className="bg-gray-200 rounded-full p-1" />
                   </span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ const detailProduk = () => {
       </div>
 
       <div className="container mt-[50px]">
-        <div className="flex flex-wrap justify-between max-w-[900px] mx-auto">
+        <div className="flex flex-wrap justify-between gap-4 max-w-[900px] mx-auto transition-responsive">
           <div>
             <h1 className=" font-semibold text-black text-[16px]">
               Description
@@ -349,7 +349,7 @@ const detailProduk = () => {
                           src={produk.img}
                           alt={produk.title}
                         />
-                        <h1 className=" font-semibold text-md leading-[16px] md:text-xl">
+                        <h1 className=" font-semibold text-md leading-[17px] md:leading-[23px] md:text-xl">
                           {produk.title}
                         </h1>
                         {/* <h2 className=" text-md">{produk.description}</h2> */}
@@ -366,9 +366,10 @@ const detailProduk = () => {
                           </div> */}
                         </div>
                         <button
+                        className="cursor-pointer mt-1 bg-green-100 hover:bg-green-200 transition px-2 py-1 rounded-md"
                           onClick={() => {
                             navigate(`/produk/${produk.slug}`);
-                            setTimeout(() => {
+                            setTimeout(() => {      
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             });
                           }}
@@ -390,14 +391,14 @@ const detailProduk = () => {
             </Swiper>
 
             {/* Tombol Navigasi Main Slider */}
-            <div className="absolute top-1/2 -left-6 z-10 cursor-pointer main-prev-2">
+            <div className="absolute top-1/2 -left-1 md:-left-6 z-10 cursor-pointer main-prev-2">
               <span>
-                <GrPrevious />
+                <GrPrevious className="bg-gray-200 rounded-full p-1" />
               </span>
             </div>
-            <div className="absolute top-1/2 -right-6 z-10 cursor-pointer main-next-2">
+            <div className="absolute top-1/2 -right-1 md:-right-6 z-10 cursor-pointer main-next-2">
               <span>
-                <GrNext />
+                <GrNext className="bg-gray-200 rounded-full p-1" />
               </span>
             </div>
           </div>
